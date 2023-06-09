@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
-import { keyframes } from "@emotion/react"
 import { HomeWorld, Person } from "../react-app-env";
 import { useEffect, useState } from "react";
 import { colors, typography } from "../styles";
 import {FiChevronRight} from "react-icons/fi"
+import Loading from "./loading";
 const Wrapper = styled.div`
   width:375px;
   padding-left:15px;
@@ -36,37 +36,6 @@ const StyledChevron = styled(FiChevronRight)`
   font-size:24px;
   margin-right:30px;
 `
-const spin = keyframes`
-  0% {
-
-    transform: rotate(0deg);
-  }
-  50% {
-
-    transform: rotate(360deg);
-  }
-  100% {
-
-    transform: rotate(720deg);
-  }
-`;
-const Loading = styled.div`
-  border: 4px solid rgba(52, 152, 219, 0);
-  border-radius: 50%;
-  border-top: 4px solid ${colors.gray.medium};
-  width: 20px;
-  height: 20px;
-  animation: ${spin} 1s linear infinite;
-`;
-const LoadingContainer = styled.div`
-  width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap: 15px;
-  padding-top: 15px;
-`
-
 interface MainProps{
   people: Person[],
   onItemClick: (person: Person) => void
@@ -122,10 +91,7 @@ export default function PeopleList({people, onItemClick}: MainProps) {
   return (
     <Wrapper> 
       {(people.length === 0 || homeworld.length === 0)?  
-        <LoadingContainer>
           <Loading/>
-          <h2>Loading</h2>
-        </LoadingContainer> 
         : 
         people.map((person, index) =>{
         return (
