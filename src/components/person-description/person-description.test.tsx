@@ -26,7 +26,7 @@ describe('PersonDescription', () => {
   }
 
   test('renders person information and vehicles', async () => {
-    render(<PersonDescription description={person} />);
+    render(<PersonDescription description={person} showList={true}/>);
     const titleElement = screen.getByText(/general information/i);
     expect(titleElement).toBeInTheDocument();
 
