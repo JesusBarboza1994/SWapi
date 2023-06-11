@@ -2,29 +2,31 @@ import styled from "@emotion/styled";
 import { colors, typography } from "../../styles";
 import {FiChevronRight} from "react-icons/fi"
 
-export const Wrapper = styled.div`
+interface WrapperProps {
+  showList: boolean;
+}
+export const Wrapper = styled.div<WrapperProps>`
   width:350px;
   padding-left:15px;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   max-height:650px;
-  overflow-y: scroll; /* Habilitar la barra de desplazamiento vertical */
-
-  /* Estilos personalizados para la barra de desplazamiento */
+  overflow-y: scroll; 
   ::-webkit-scrollbar {
-    width: 4px; /* Ancho de la barra de desplazamiento */
+    width: 4px; 
   }
-
   ::-webkit-scrollbar-track {
-    background-color: #f1f1f1; /* Color de fondo de la barra de desplazamiento */
+    background-color: #f1f1f1; 
   }
-
   ::-webkit-scrollbar-thumb {
-    background-color: #888; /* Color del pulgar de la barra de desplazamiento */
-    border-radius: 4px; /* Borde redondeado del pulgar */
+    background-color: #888; 
+    border-radius: 4px; 
   }
-
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #555; /* Color del pulgar de la barra de desplazamiento al pasar el cursor */
+    background-color: #555; 
+  }
+  @media(max-width: 768px){
+    width:100%;
+    display: ${props=> props.showList ? "block" : "none"};
   }
 `
 export const PersonCell = styled.div`
@@ -36,6 +38,7 @@ export const PersonCell = styled.div`
   div{
     padding:16px;
   }
+  
 `
 export const Name = styled.p`
   ${typography.h2.default};

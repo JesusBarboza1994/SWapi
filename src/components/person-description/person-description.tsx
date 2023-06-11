@@ -5,7 +5,8 @@ import * as Styled from "./styles";
 import {getVehicles} from "../../services/fetch-services"
 
 interface DetallePersonaProps{
-  description: Person
+  description: Person,
+  showList: boolean
 }
 interface DescriptionProps{
   text: string,
@@ -22,7 +23,7 @@ const DataCell = ({text, description=""}: DescriptionProps)=>(
     <Styled.DetailText>{description}</Styled.DetailText>
   </Styled.DataCell>
 )
-export default function PersonDescription({description}: DetallePersonaProps) {
+export default function PersonDescription({description, showList}: DetallePersonaProps) {
   const [vehicles, setVehicles] = useState<Vehicle[]>([])
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function PersonDescription({description}: DetallePersonaProps) {
   }, [description])
   
   return(
-    <Styled.Wrapper>
+    <Styled.Wrapper showList = {showList}>
       <SectionHeader text="General Information"/>
       <DataCell text="Eye Color " description={description.eye_color}/>
       <DataCell text="Skin Color " description={description.skin_color}/>

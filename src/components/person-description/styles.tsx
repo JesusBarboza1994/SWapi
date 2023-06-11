@@ -1,9 +1,20 @@
 import styled from "@emotion/styled";
 import { colors, typography } from "../../styles";
 
-export const Wrapper = styled.div`
+interface WrapperProps {
+  showList: boolean;
+}
+export const Wrapper = styled.div<WrapperProps>`
   padding: 0px 100px;
   width:100%;
+  @media(max-width: 768px){
+    display:none;
+    display: ${props=> !props.showList ? "block" : "none"};
+    padding: 0px 80px;
+  }
+  @media(max-width: 500px){
+    padding: 0px 30px;
+  }
 `
 export const DataCell = styled.div`
   width:100%; 

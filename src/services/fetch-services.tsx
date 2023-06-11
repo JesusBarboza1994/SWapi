@@ -31,7 +31,6 @@ export async function getPeople(people:Person[], numberPage:number,
   try{
     const response = await fetch(url)
     const data = await response.json()
-    console.log(data.results)
     setPeople([...people, ...data.results])
   }catch{
     setError('Failed to fetch');
